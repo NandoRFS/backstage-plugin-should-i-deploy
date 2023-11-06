@@ -6,4 +6,3 @@ coverage/
 .vscode
 .DS_Store
 reports/
-yarn.lock
