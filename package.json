@@ -1,72 +1,59 @@
 {
-  "name": "backstage-plugin-should-i-deploy",
-  "description": "Have you ever asked yourself... should I deploy today?",
-  "version": "0.1.1",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
-  "license": "Apache-2.0",
-  "author": "nandorfs",
-  "private": false,
-  "publishConfig": {
-    "access": "public",
-    "main": "dist/index.esm.js",
-    "types": "dist/index.d.ts"
+  "name": "root",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0"
   },
-  "backstage": {
-    "role": "frontend-plugin"
-  },
-  "keywords": [
-    "backstage",
-    "plugin"
-  ],
-  "homepage": "https://github.com/NandoRFS/backstage-plugin-should-i-deploy/",
-  "bugs": {
-    "url": "https://github.com/NandoRFS/backstage-plugin-should-i-deploy/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NandoRFS/backstage-plugin-should-i-deploy/"
+  "volta": {
+    "node": "18.12.1",
+    "yarn": "1.22.19"
   },
   "scripts": {
-    "start": "backstage-cli package start",
-    "build": "backstage-cli package build",
-    "lint": "backstage-cli package lint",
-    "test": "backstage-cli package test",
+    "dev": "concurrently \"yarn start\" \"yarn start:backend\"",
+    "start": "npx lerna --scope backstage-plugin-should-i-deploy run start",
+    "build": "yarn tsc && backstage-cli repo build --all",
+    "test": "yarn lerna exec yarn test:coverage",
     "clean": "backstage-cli package clean",
     "prepack": "backstage-cli package prepack",
-    "postpack": "backstage-cli package postpack"
+    "postpack": "backstage-cli package postpack",
+    "lint:fix": "yarn lerna exec yarn lint:fix",
+    "prepare": "husky install",
+    "tsc": "tsc"
   },
-  "dependencies": {
-    "@backstage/core-components": "^0.13.7",
-    "@backstage/core-plugin-api": "^1.7.0",
-    "@backstage/plugin-home-react": "^0.1.4",
-    "@backstage/theme": "^0.4.3",
-    "@material-ui/core": "^4.9.13",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "4.0.0-alpha.57",
-    "@testing-library/jest-dom": "^5.10.1",
-    "@types/react": "^18.0.0",
+  "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.36.0",
+    "@typescript-eslint/parser": "^5.36.0",
+    "concurrently": "^7.6.0",
     "cross-fetch": "^3.1.5",
-    "react-use": "^17.2.4"
-  },
-  "peerDependencies": {
+    "eslint": "^8.23.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import-newlines": "^1.3.1",
+    "eslint-plugin-md": "^1.0.19",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "lerna": "^6.5.1",
+    "lint-staged": "^13.2.0",
+    "markdown-toc": "^1.2.0",
+    "msw": "^0.49.0",
+    "prettier": "^2.7.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router": "^6.3.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "@types/react": "18.0.0"
   },
-  "devDependencies": {
-    "@backstage/cli": "^0.23.1",
-    "@backstage/core-app-api": "^1.11.0",
-    "@backstage/dev-utils": "^1.0.22",
-    "@backstage/test-utils": "^1.4.4",
-    "@testing-library/react": "12.1.3",
-    "@testing-library/user-event": "^14.0.0",
-    "@types/jest": "*",
-    "@types/node": "*",
-    "msw": "^0.44.0"
+  "workspaces": {
+    "packages": [
+      "plugins/*"
+    ]
   },
-  "files": [
-    "dist"
-  ]
+  "dependencies": {
+    "@backstage/backend-common": "^0.19.0",
+    "@backstage/dev-utils": "^1.0.16"
+  }
 }

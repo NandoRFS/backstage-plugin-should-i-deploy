@@ -1,0 +1,75 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module",
+    "project": ["./tsconfig.json", "./plugins/*/tsconfig.json", "./tsconfig.eslint.json"],
+    "tsconfigRootDir": "."
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "plugins": ["prettier"],
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "ignorePatterns": [
+    ".eslintrc.js",
+    "**/jest.config.js",
+    "**/dist/**",
+    "**/dist-types/**",
+    "**/examples/**",
+    "**/coverage/**"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto",
+        "printWidth": 90,
+        "singleQuote": true,
+        "semi": true,
+        "trailingComma" : "all",
+        "arrowParens": "always"
+      }
+    ],
+    "@typescript-eslint/no-var-requires": "off",
+    "prefer-rest-params": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "import/prefer-default-export": "off",
+    // "import-newlines/enforce": [
+    //   "error",
+    //   {
+    //     "items": 4,
+    //     "max-len": 90,
+    //     "semi": true
+    //   }
+    // ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/no-unresolved": "off",
+    "import/no-import-module-exports": "off",
+    "no-return-await": "off",
+    "@typescript-eslint/return-await": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"]
+      }
+    }
+  }
+}

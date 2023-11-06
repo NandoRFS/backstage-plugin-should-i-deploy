@@ -48,33 +48,33 @@ export const shouldIDeployPlugin = createPlugin({
 export const ShouldIDeployPage = shouldIDeployPlugin.provide(
   createRoutableExtension({
     name: "ShouldIDeployPage",
-    component: () =>
-      import("./components/ShouldIDeployCard").then((m) => m.Content),
+    component: () => import("./components/ShouldIDeployCard").then((m) => m.Content),
     mountPoint: rootRouteRef,
   })
 );
 
 /** @public */
-export const ShouldIDeployCard = shouldIDeployPlugin.provide(
-  createCardExtension<{ timeZone?: string; title?: string }>({
-    name: "ShouldIDeployCard",
-    components: () => import("./components/ShouldIDeployCard"),
-    layout: {
-      height: { minRows: 4 },
-      width: { minColumns: 3 },
-    },
-    settings: {
-      schema: {
-        title: "Should I Deploy settings",
-        type: "object",
-        properties: {
-          timeZone: {
-            title: "config local timezone",
-            type: "string",
-            enum: timeZones,
+export const ShouldIDeployCard: React.FC<{ timeZone?: string; title?: string }> =
+  shouldIDeployPlugin.provide(
+    createCardExtension<{ timeZone?: string; title?: string }>({
+      name: "ShouldIDeployCard",
+      components: () => import("./components/ShouldIDeployCard"),
+      layout: {
+        height: { minRows: 4 },
+        width: { minColumns: 3 },
+      },
+      settings: {
+        schema: {
+          title: "Should I Deploy settings",
+          type: "object",
+          properties: {
+            timeZone: {
+              title: "config local timezone",
+              type: "string",
+              enum: timeZones,
+            },
           },
         },
       },
-    },
-  })
-);
+    })
+  );
