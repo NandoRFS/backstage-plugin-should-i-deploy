@@ -14,6 +14,14 @@ Tired of looking at the calendar to see if today is a good day to deploy? Your p
 
 ![Simple card](../../docs/should-i-deploy-card-with-title.png)
 
+### Card it's not time to do it
+
+![Simple card](../../docs/should-i-deploy-card-its-not-time.png)
+
+### Card you can do it
+
+![Simple card](../../docs/should-i-deploy-card-go-ahead.png)
+
 ## Getting started
 
 ### Install the package
