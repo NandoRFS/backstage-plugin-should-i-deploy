@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { FetchApi } from '@backstage/core-plugin-api';
-import { ShouldIDeployCIApi } from './ShouldIDeployCIApi';
-import { ApiResponse } from '../@types/api/apiResponse';
+import { FetchApi } from "@backstage/core-plugin-api";
+import { ShouldIDeployCIApi } from "./ShouldIDeployCIApi";
+import { ApiResponse } from "../@types/api/apiResponse";
 
 export class ShouldIDeployCIClient implements ShouldIDeployCIApi {
   fetchApi: FetchApi;
@@ -27,7 +27,7 @@ export class ShouldIDeployCIClient implements ShouldIDeployCIApi {
   protected async callApi<T>(timeZone?: string): Promise<T> {
     const url = timeZone
       ? `https://shouldideploy.today/api?tz=${timeZone}`
-      : 'https://shouldideploy.today/api';
+      : "https://shouldideploy.today/api";
     const response = await this.fetchApi.fetch(url);
 
     if (response.ok) {
@@ -43,7 +43,7 @@ export class ShouldIDeployCIClient implements ShouldIDeployCIApi {
 
       return response;
     } catch (_error) {
-      throw new Error('Error to load response.');
+      throw new Error("Error to load response.");
     }
   }
 }

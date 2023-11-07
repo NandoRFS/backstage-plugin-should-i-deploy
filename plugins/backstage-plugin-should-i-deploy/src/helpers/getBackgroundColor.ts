@@ -13,27 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const getBackegroundColor = (day: number) => {
-  const red = 'Red';
-  const green = 'MediumSpringGreen';
-  const orange = 'LightSalmon';
-  const white = 'White';
-  switch (day) {
-    case 1:
-      return green;
-    case 2:
-      return green;
-    case 3:
-      return green;
-    case 4:
-      return orange;
-    case 5:
-      return red;
-    case 6:
-      return red;
-    case 0:
-      return red;
-    default:
-      return white;
-  }
+export const getBackgroundColor = (day: number, shouldDeploy: boolean = true) => {
+  const colors: { [key: number]: string } = {
+    1: shouldDeploy ? "MediumSpringGreen" : "LightSalmon",
+    2: shouldDeploy ? "MediumSpringGreen" : "LightSalmon",
+    3: shouldDeploy ? "MediumSpringGreen" : "LightSalmon",
+    4: shouldDeploy ? "MediumSpringGreen" : "LightSalmon",
+    5: "Red",
+    6: "Red",
+    0: "Red",
+  };
+
+  return colors[day] || "White";
 };

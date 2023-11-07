@@ -18,7 +18,7 @@ import { Progress, ResponseErrorPanel } from '@backstage/core-components';
 import { useApi } from '@backstage/core-plugin-api';
 import useAsync from 'react-use/lib/useAsync';
 import { ShouldIDeployCIApiRef } from '../../api';
-import { getBackegroundColor } from '../../helpers/getBackgroundColor';
+import { getBackgroundColor } from '../../helpers/getBackgroundColor';
 import { cardStyles } from './CardStyles';
 import { Typography } from '@material-ui/core';
 
@@ -31,7 +31,7 @@ export const ShouldIDeployCard = ({ timeZone }: { timeZone?: string }) => {
   const { loading, error } = useAsync(async () => {
     const res = await ShouldIDeployCIApi.get(timeZone);
     const day = new Date(res.date).getDay();
-    setBackgroundColor(getBackegroundColor(day));
+    setBackgroundColor(getBackgroundColor(day, res.shouldideploy));
     setReasons(res?.message);
 
     return res;
